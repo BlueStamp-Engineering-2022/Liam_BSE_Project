@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: db117b164a7dc804d903f5c390c6f7f8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - CellPrefab: {instanceID: 0}
+  - PawnPrefab: {fileID: 153518, guid: 3949e27daa9367d4c8e5e9da3fdc7c21, type: 3}
+  - blackMaterial: {fileID: 2100000, guid: 8dd0be2a12fc5d74bbce5dd2684861da, type: 2}
+  - whiteMaterial: {fileID: 2100000, guid: a6d46afed4c38a54b9d3680048d10992, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
