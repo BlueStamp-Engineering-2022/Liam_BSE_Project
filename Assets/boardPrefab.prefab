@@ -45,9 +45,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CellPrefab: {fileID: 11471870, guid: 23e555e743292c949ae6be9d7a70ee1b, type: 3}
   PawnPrefab: {fileID: 153518, guid: 3949e27daa9367d4c8e5e9da3fdc7c21, type: 3}
+  bishopPrefab: {fileID: 3264955585871106803, guid: d26a21cd58a5abc4896383800ff764bc, type: 3}
+  rookPrefab: {fileID: 1264500809764905481, guid: 1e0ebfa3365af6642b8802a45c533b43, type: 3}
+  kingPrefab: {fileID: 7461207892825371517, guid: 9def5338208535442a283bd830ee7990, type: 3}
+  knightPrefab: {fileID: 455099464882606876, guid: f82b902f7ee7ef447b21fa489fb6b63f, type: 3}
+  queenPrefab: {fileID: 2220261304955078840, guid: 08b95cec5ff65f74eb7d086ca57120b9, type: 3}
+  PawnPrefabB: {fileID: 7067485744954558110, guid: abae8a3946574e046b84490dcf2b30bc, type: 3}
+  bishopPrefabB: {fileID: 3436412791835535925, guid: 2c94832bafeac2844a87519d909b31ad, type: 3}
+  rookPrefabB: {fileID: 3950296121967065047, guid: 7ade83aac85a090488aa186325780ad3, type: 3}
+  kingPrefabB: {fileID: 3190879122124865253, guid: 59e9c458d1ee45a4b8334ee693de752b, type: 3}
+  knightPrefabB: {fileID: 3617562707289627902, guid: c61436de5c557aa4d8a95132e1fe47b0, type: 3}
+  queenPrefabB: {fileID: 2829820823278945836, guid: e45a0d5d5f4ef9a4f85cdd6cda23a9e1, type: 3}
   Cells: []
+  PawnLimit: 0
   blackMaterial: {fileID: 2100000, guid: 8dd0be2a12fc5d74bbce5dd2684861da, type: 2}
   whiteMaterial: {fileID: 2100000, guid: a6d46afed4c38a54b9d3680048d10992, type: 2}
-  x: 0
-  y: 0
-  occupied: 0

@@ -153,9 +153,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yellowMaterial: {fileID: 2100000, guid: a64772577005b714aab87d3036611c9d, type: 2}
+  redMaterial: {fileID: 0}
   boardPrefab: {fileID: 11407630, guid: 2b1aa1138e61b2647b6e4991e30b9c44, type: 3}
   DebugText: {fileID: 1875233041}
   CellPrefab: {fileID: 11471870, guid: 23e555e743292c949ae6be9d7a70ee1b, type: 3}
+  OldX: 0
+  OldY: 0
+  Cells: []
+  Z: -1
+  PawnPrefab: {fileID: 153518, guid: 3949e27daa9367d4c8e5e9da3fdc7c21, type: 3}
+  bishopPrefab: {fileID: 3264955585871106803, guid: d26a21cd58a5abc4896383800ff764bc, type: 3}
+  rookPrefab: {fileID: 1264500809764905481, guid: 1e0ebfa3365af6642b8802a45c533b43, type: 3}
+  kingPrefab: {fileID: 7461207892825371517, guid: 9def5338208535442a283bd830ee7990, type: 3}
+  knightPrefab: {fileID: 455099464882606876, guid: f82b902f7ee7ef447b21fa489fb6b63f, type: 3}
+  queenPrefab: {fileID: 2220261304955078840, guid: 08b95cec5ff65f74eb7d086ca57120b9, type: 3}
+  PawnLimit: 0
+  BishopLimit: 0
+  RookLimit: 0
+  KingLimit: 0
+  KnightLimit: 0
+  QueenLimit: 0
 --- !u!4 &35820385
 Transform:
   m_ObjectHideFlags: 0
