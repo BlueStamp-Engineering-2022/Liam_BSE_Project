@@ -92,14 +92,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 176310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bbda27b54f4a61498fd58d9dd1ccab9, type: 3}
+  m_Script: {fileID: 11500000, guid: 79a6b8dacf3a0154daf06ab2259cc31c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CellPrefab: {fileID: 11471870}
-  PawnPrefab: {fileID: 153518, guid: 3949e27daa9367d4c8e5e9da3fdc7c21, type: 3}
-  Cells: []
-  blackMaterial: {fileID: 2100000, guid: 8dd0be2a12fc5d74bbce5dd2684861da, type: 2}
-  whiteMaterial: {fileID: 2100000, guid: a6d46afed4c38a54b9d3680048d10992, type: 2}
   x: 0
   y: 0
   occupied: 0

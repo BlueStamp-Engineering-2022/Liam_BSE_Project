@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-
+//IF STUFF BREAKS CHECK DEBUG UPDATE
 public class Board : MonoBehaviour
 {
     public Cell CellPrefab;
@@ -54,6 +55,217 @@ public class Board : MonoBehaviour
 
     public Material whiteMaterial;
 
+    public bool ClickedOnce = false;
+
+    public GameObject high;
+
+    public int OldX;
+
+    public int OldY;
+
+    public int posx;
+
+    public int posy;
+
+    public GameObject Pawn_Move_Light;
+
+    public bool Click = false;
+
+    public bool Highlighted = false;
+
+    public bool[,] MoveHighlightVectors;
+
+    public bool[,] PieceMovement;
+
+    public bool [,] PossibleMove;
+
+    public bool R = false;
+
+    public GameObject highlightPrefab;
+
+    public Text DebugText;
+
+    public bool ClickedForHighlightDelete = false;
+
+    public GameObject highlightPrefab1;
+
+    bool HighlightedMove = true; //CHANGE THIS BACK TO FALSE IF THINGS DONT DELETE
+
+    public int MoveHighlight = 0;
+    
+    public bool INSANITY = false;
+
+    bool MADNESS = false;
+
+    public GameObject Move;
+
+    void MovePiece(int x, int y)
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log(x + " " + y);
+            Click = false;
+        }
+    }
+
+    void detectInput() {
+        if(Input.GetMouseButtonDown(0)){
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //Debug.Log("Input Detected");
+            if (Physics.Raycast(ray, out hit, 1000.000f)){
+                Cell hitCell = hit.collider.GetComponent<Cell> ();
+                //Debug.Log("Raycast sent");
+                Highlight (hitCell.x, hitCell.y);
+
+                //updateDebugView ();
+            }
+            
+        }
+
+    }
+
+    
+    string debugGameState() {
+    
+        string map = "";
+
+        for (int x = 0; x < 8; x++){
+            map += x + ": ";
+
+            for (int y = 0; y < 8; y++) {
+                map += "[" + grid [x, y] + "]";
+            }
+            map += "\n";
+        }
+        return map;
+    }
+
+    void updateDebugView(){
+        DebugText.text = debugGameState ();
+    }
+
+    public void PawnMoves(int x, int y)
+    {
+        posx = x;
+        posy = y;
+
+        Move = Instantiate(highlightPrefab, new Vector3 (posx-3.5f, posy-4.5f, -1.9f), Quaternion.identity);
+        grid [OldX, OldY - 1] = grid[OldX, OldY] + 20;
+        Debug.Log(grid[OldX, OldY]);
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Space");
+        }
+        
+    }
+    void GenerateMoves(int x, int y)
+    {
+        switch (grid [x, y])
+        {
+            case 23:
+                Debug.Log("Pawn Selected");
+                PawnMoves(x, y);
+                break;
+
+            case 0:
+                //Debug.Log("gggggg");
+                break;
+        
+            case 25:
+                Debug.Log("Bishop Selected");
+                break; 
+
+            case 24:
+                Debug.Log("Knight Selected");
+                break;
+
+            case 22:
+                Debug.Log("King Selected");
+                break;     
+
+            case 27:
+                Debug.Log("Queen Selected");
+                break;
+                
+            case 26:
+                Debug.Log("Rook Selected");
+                break;
+
+            case 33:
+                Debug.Log("Pawn Selected");
+                break;
+
+            case 35:
+                Debug.Log("Bishop Selected");
+                break; 
+
+            case 34:
+                Debug.Log("Knight Selected");
+                break;
+
+            case 32:
+                Debug.Log("King Selected");
+                break;     
+
+            case 37:
+                Debug.Log("Queen Selected");
+                break;
+                
+            case 36:
+                Debug.Log("Rook Selected");
+                break;
+        }
+        
+            
+        
+    } 
+
+
+    void Highlight(int x, int y){
+
+        if(ClickedOnce == false)
+        {
+            high = Instantiate(highlightPrefab, new Vector3 (x-3.5f, y-3.5f, -1.9f), Quaternion.identity);
+            //OldX = grid [x,y];
+            //Debug.Log(OldX);
+            //Debug.Log(OldY);
+            OldX = x;
+            OldY = y;
+            grid [OldX, OldY] = grid[OldX, OldY] + 20;
+            //if(grid [OldX, OldY] > 21)
+            //{
+                for(int i = 0; i < 8; i++)
+                {
+                    for(int j = 0; j < 8; j++)
+                    {
+                        GenerateMoves(i, j);
+                    }
+                }
+            //}
+            ClickedOnce = true;
+            updateDebugView();
+        }
+        else if(ClickedOnce == true && Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Highlight function delete call");
+            Destroy(high);
+
+            Destroy(Move);
+            grid [OldX, OldY - 1] = 0;
+
+            grid [OldX, OldY] = grid[OldX, OldY] - 20;
+            ClickedOnce = false;
+            //INSANITY = true;
+            //Click = false;
+            updateDebugView();
+        }
+            
+        
+    } 
+
+
+
     public void generate() {
         Cells = new List<Cell> ();
 
@@ -84,7 +296,7 @@ public class Board : MonoBehaviour
         newCell.y = posy;
 
         newCell.transform.parent = transform;
-        newCell.transform.localPosition = new Vector3 (posx, posy, 0);
+        newCell.transform.localPosition = new Vector3 (posx - 3.5f, posy - 3.5f, 0);
 
         newCell.name = "Board cell [" + posx + "," + posy + "]";
 
@@ -179,6 +391,9 @@ public class Board : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PossibleMove = new bool [8,8];
+
+        MoveHighlightVectors = new bool[8,8];
 
         grid = new int[8,8];
 
@@ -218,6 +433,17 @@ public class Board : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        detectInput();
+        //Debug.Log("Highlight delete bool: " + ClickedForHighlightDelete);
         //populate();
+        /*
+        for(int i = 0; i < 8; i++)
+        {
+            for(int j = 0; j < 8; j++)
+            {
+                GenerateMoves(i, j);
+            }
+        }
+        */
     }
 }

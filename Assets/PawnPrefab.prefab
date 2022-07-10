@@ -9,12 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 453800}
-  - component: {fileID: -5279043237843262284}
   - component: {fileID: 4550568601456596203}
   - component: {fileID: 701210065057985297}
-  - component: {fileID: -8890697518274349634}
   - component: {fileID: -3853800720187128405}
-  - component: {fileID: -4181944514002847788}
   m_Layer: 0
   m_Name: PawnPrefab
   m_TagString: Untagged
@@ -36,18 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5279043237843262284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 153518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cf8829705ef2c84e80c9dcba9d5bfc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &4550568601456596203
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -95,18 +80,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-8890697518274349634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 153518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e5cf28bb82897b4c80d2af62a190099, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &-3853800720187128405
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -158,15 +131,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-4181944514002847788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 153518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e5cf28bb82897b4c80d2af62a190099, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

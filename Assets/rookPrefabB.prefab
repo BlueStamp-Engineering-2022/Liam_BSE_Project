@@ -10,10 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1235022802191350010}
   - component: {fileID: 4994627511588059924}
-  - component: {fileID: 5067828433793939840}
   - component: {fileID: 4732588965731181908}
   - component: {fileID: 6098254107897786278}
-  - component: {fileID: 6120339274557470730}
   m_Layer: 0
   m_Name: rookPrefabB
   m_TagString: Untagged
@@ -91,18 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5067828433793939840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3950296121967065047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cf8829705ef2c84e80c9dcba9d5bfc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &4732588965731181908
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -150,15 +136,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6120339274557470730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3950296121967065047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e5cf28bb82897b4c80d2af62a190099, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: 039094b0e74587c46a4ea73cbbab0f8b
+guid: fca2972e54094df448da9ea6c366eeba
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - boardPrefab: {fileID: 11407630, guid: 2b1aa1138e61b2647b6e4991e30b9c44, type: 3}
-  - DebugText: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

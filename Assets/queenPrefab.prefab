@@ -10,11 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5600560508334237471}
   - component: {fileID: -320570622151202372}
-  - component: {fileID: 1993824070415969105}
   - component: {fileID: -4912777279906584561}
-  - component: {fileID: -1701483209876195675}
   - component: {fileID: -238785664722219416}
-  - component: {fileID: 8813080066923909882}
   m_Layer: 0
   m_Name: queenPrefab
   m_TagString: Untagged
@@ -62,18 +59,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1993824070415969105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2220261304955078840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cf8829705ef2c84e80c9dcba9d5bfc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &-4912777279906584561
 Rigidbody2D:
   serializedVersion: 4
@@ -95,18 +80,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-1701483209876195675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2220261304955078840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e5cf28bb82897b4c80d2af62a190099, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &-238785664722219416
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -158,15 +131,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8813080066923909882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2220261304955078840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e5cf28bb82897b4c80d2af62a190099, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

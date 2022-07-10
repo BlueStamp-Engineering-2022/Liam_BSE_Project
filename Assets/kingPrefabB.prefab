@@ -10,10 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1513799804897344478}
   - component: {fileID: 8806228389431684511}
-  - component: {fileID: 4124183318526289300}
   - component: {fileID: 2198633597335163873}
   - component: {fileID: 3051117998596546318}
-  - component: {fileID: 4709799809554439100}
   m_Layer: 0
   m_Name: kingPrefabB
   m_TagString: Untagged
@@ -91,18 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4124183318526289300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3190879122124865253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cf8829705ef2c84e80c9dcba9d5bfc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &2198633597335163873
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -150,15 +136,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4709799809554439100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3190879122124865253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e5cf28bb82897b4c80d2af62a190099, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
