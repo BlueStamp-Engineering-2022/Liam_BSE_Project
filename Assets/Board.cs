@@ -99,13 +99,24 @@ public class Board : MonoBehaviour
 
     public GameObject Move;
 
-    void MovePiece(int x, int y)
+    public bool Moving = false;
+
+    public bool stufffff = false;
+
+
+
+    void MovePieces(int x, int y)
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        Debug.Log(x + " " + y);
+        switch (grid[x, y])
         {
-            Debug.Log(x + " " + y);
-            Click = false;
+            case 43:
+                Debug.Log("Pawn Moved (PLEASE)");
+                Moving = true;
+                MoveStuff(x, y);
+                break;
         }
+
     }
 
     void detectInput() {
@@ -116,7 +127,9 @@ public class Board : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 1000.000f)){
                 Cell hitCell = hit.collider.GetComponent<Cell> ();
                 //Debug.Log("Raycast sent");
+                MovePieces(hitCell.x, hitCell.y);
                 Highlight (hitCell.x, hitCell.y);
+ 
 
                 //updateDebugView ();
             }
@@ -153,9 +166,13 @@ public class Board : MonoBehaviour
         Move = Instantiate(highlightPrefab, new Vector3 (posx-3.5f, posy-4.5f, -1.9f), Quaternion.identity);
         grid [OldX, OldY - 1] = grid[OldX, OldY] + 20;
         Debug.Log(grid[OldX, OldY]);
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(grid[OldX, OldY - 1] > 42)
         {
             Debug.Log("Space");
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //Debug.Log("Input Detected");
+        
         }
         
     }
@@ -167,7 +184,6 @@ public class Board : MonoBehaviour
                 Debug.Log("Pawn Selected");
                 PawnMoves(x, y);
                 break;
-
             case 0:
                 //Debug.Log("gggggg");
                 break;
@@ -246,15 +262,19 @@ public class Board : MonoBehaviour
             ClickedOnce = true;
             updateDebugView();
         }
-        else if(ClickedOnce == true && Input.GetMouseButtonDown(0))
+        else if(ClickedOnce == true && Input.GetMouseButtonDown(0) && Moving == false) //Change back to 0 after testing
         {
             Debug.Log("Highlight function delete call");
             Destroy(high);
 
             Destroy(Move);
-            grid [OldX, OldY - 1] = 0;
 
-            grid [OldX, OldY] = grid[OldX, OldY] - 20;
+            if(!stufffff)
+            {
+                grid [OldX, OldY - 1] = 0;
+
+                grid [OldX, OldY] = grid[OldX, OldY] - 20;
+            }
             ClickedOnce = false;
             //INSANITY = true;
             //Click = false;
@@ -387,6 +407,88 @@ public class Board : MonoBehaviour
         
             
         
+    }
+
+    void MoveStuff(int x, int y)
+    {
+        switch(grid[x, y])
+        {
+            case 43:
+                Debug.Log("Pawn");
+                GameObject newPawn = Instantiate (PawnPrefab) as GameObject;
+                newPawn.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
+                PawnLimit= PawnLimit + 1;
+                stufffff = true;
+                Debug.Log("Got past instanti");
+                grid[x, y + 1] = 0;
+                Debug.Log("Got past grid set 1");
+                grid[x, y] = 3;
+                Debug.Log("Got past grid set 2");
+                Moving = false;
+                break;
+            case 0:
+                //Debug.Log("gggggg");
+                break;
+        
+            case 5:
+                GameObject newBishop = Instantiate (bishopPrefab) as GameObject;
+                newBishop.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
+                break; 
+
+            case 4:
+                GameObject newKnight = Instantiate (knightPrefab) as GameObject;
+                newKnight.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
+                break;
+
+            case 2:
+                GameObject newKing = Instantiate (kingPrefab) as GameObject;
+                newKing.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
+                break;     
+
+            case 7:
+                GameObject newQueen = Instantiate (queenPrefab) as GameObject;
+                newQueen.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
+                break;
+                
+            case 6:
+                GameObject newRook = Instantiate (rookPrefab) as GameObject;
+                newRook.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
+                break;
+
+            case 13:
+                if (PawnLimit < 20) {
+                    //Debug.Log("Pawn");
+                    GameObject newPawnB = Instantiate (PawnPrefabB) as GameObject;
+                    newPawnB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
+                    PawnLimit= PawnLimit + 1;
+                }
+                break;
+
+            case 15:
+                GameObject newBishopB = Instantiate (bishopPrefabB) as GameObject;
+                newBishopB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
+                break; 
+
+            case 14:
+                GameObject newKnightB = Instantiate (knightPrefabB) as GameObject;
+                newKnightB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
+                break;
+
+            case 12:
+                GameObject newKingB = Instantiate (kingPrefabB) as GameObject;
+                newKingB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
+                break;     
+
+            case 17:
+                GameObject newQueenB = Instantiate (queenPrefabB) as GameObject;
+                newQueenB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
+                break;
+                
+            case 16:
+                GameObject newRookB = Instantiate (rookPrefabB) as GameObject;
+                newRookB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
+                break;
+        }
     }
     // Start is called before the first frame update
     void Start()
