@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3343168}
   - component: {fileID: 2393672}
   - component: {fileID: 11471870}
-  - component: {fileID: 6521986}
-  m_Layer: 0
+  - component: {fileID: 3666649228022631487}
+  m_Layer: 5
   m_Name: CellPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
   x: 0
   y: 0
   occupied: 0
---- !u!65 &6521986
+--- !u!65 &3666649228022631487
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

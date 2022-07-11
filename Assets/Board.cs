@@ -51,6 +51,16 @@ public class Board : MonoBehaviour
 
     public int PawnLimit = 0;
 
+    public int BishopLimit = 0;
+
+    public int RookLimit = 0;
+
+    public int KnightLimit = 0;
+
+    public int QueenLimit = 0;
+
+    public int KingLimit = 0;
+
     public Material blackMaterial;
 
     public Material whiteMaterial;
@@ -89,13 +99,7 @@ public class Board : MonoBehaviour
 
     public GameObject highlightPrefab1;
 
-    bool HighlightedMove = true; //CHANGE THIS BACK TO FALSE IF THINGS DONT DELETE
-
     public int MoveHighlight = 0;
-    
-    public bool INSANITY = false;
-
-    bool MADNESS = false;
 
     public GameObject Move;
 
@@ -103,35 +107,59 @@ public class Board : MonoBehaviour
 
     public bool stufffff = false;
 
+    public GameObject[,] Pieces;
+
+    //GameObject newPawn;
+
+    GameObject movedPawn;
+
+    GameObject movedstuff;
+
+
 
 
     void MovePieces(int x, int y)
     {
-        Debug.Log(x + " " + y);
-        switch (grid[x, y])
-        {
-            case 43:
-                Debug.Log("Pawn Moved (PLEASE)");
-                Moving = true;
-                MoveStuff(x, y);
-                break;
-        }
 
     }
 
     void detectInput() {
+
+        for(int x = 0; x < 8; x++)
+        {
+            for(int y = 0; y < 8; y++)
+            {
+                if(grid[x, y] == 43)
+                {
+                    Moving = true;
+                    var curx = x;
+                    var cury = y;
+
+                    if(Input.GetMouseButtonDown(0))
+                    {
+                        Debug.Log("Current X: " + curx + " " + "Current Y: " + cury);
+                        Debug.Log(Pieces[curx, cury + 1]);
+                        GameObject newPawn = Instantiate (PawnPrefab) as GameObject;
+                        newPawn.transform.localPosition = new Vector3(curx - 3.5f, cury -3.5f, -2);
+                        Pieces[curx, cury] = newPawn;
+                        Debug.Log(curx + " " + cury);
+                        Destroy(Pieces[curx, cury + 1]);
+                        
+                        Debug.Log("Grid is 43");
+                        Moving = false;
+                    }
+                }
+            }
+        }
+
         if(Input.GetMouseButtonDown(0)){
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             //Debug.Log("Input Detected");
             if (Physics.Raycast(ray, out hit, 1000.000f)){
                 Cell hitCell = hit.collider.GetComponent<Cell> ();
-                //Debug.Log("Raycast sent");
-                MovePieces(hitCell.x, hitCell.y);
-                Highlight (hitCell.x, hitCell.y);
- 
 
-                //updateDebugView ();
+                Highlight (hitCell.x, hitCell.y);
             }
             
         }
@@ -165,7 +193,7 @@ public class Board : MonoBehaviour
 
         Move = Instantiate(highlightPrefab, new Vector3 (posx-3.5f, posy-4.5f, -1.9f), Quaternion.identity);
         grid [OldX, OldY - 1] = grid[OldX, OldY] + 20;
-        Debug.Log(grid[OldX, OldY]);
+        //Debug.Log(grid[OldX, OldY]);
         if(grid[OldX, OldY - 1] > 42)
         {
             Debug.Log("Space");
@@ -264,17 +292,15 @@ public class Board : MonoBehaviour
         }
         else if(ClickedOnce == true && Input.GetMouseButtonDown(0) && Moving == false) //Change back to 0 after testing
         {
-            Debug.Log("Highlight function delete call");
+           // Debug.Log("Highlight function delete call");
             Destroy(high);
 
             Destroy(Move);
 
-            if(!stufffff)
-            {
-                grid [OldX, OldY - 1] = 0;
+            grid [OldX, OldY] = grid[OldX, OldY] - 20;
 
-                grid [OldX, OldY] = grid[OldX, OldY] - 20;
-            }
+            grid [OldX, OldY - 1] = 0;
+
             ClickedOnce = false;
             //INSANITY = true;
             //Click = false;
@@ -287,13 +313,12 @@ public class Board : MonoBehaviour
 
 
     public void generate() {
-        Cells = new List<Cell> ();
+        //Cells = new List<Cell> ();
 
-        for(int x = 0; x < 8; x++)
+        for(int x = 0; x  < 8; x++)
         {
             for(int y = 0; y < 8; y++)
             {
-                Cells.Add(createCell (x, y, (x + y) % 2));
                 populate(x, y);
             }
         }
@@ -321,173 +346,140 @@ public class Board : MonoBehaviour
         newCell.name = "Board cell [" + posx + "," + posy + "]";
 
         return newCell;
-        //return null;
     }
 
     public void populate(int x, int y) 
     {
-        //Debug.Log("Populate Function Called");
-        //Debug.Log("test");
-        //Debug.Log(x);
-       // Debug.Log(y);
-        //cellInstance.occupied = true;
-            switch (grid [x, y])
-            {
-                case 3:
-                    if (PawnLimit < 20) {
-                        //Debug.Log("Pawn");
-                        GameObject newPawn = Instantiate (PawnPrefab) as GameObject;
-                        newPawn.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                        PawnLimit= PawnLimit + 1;
-                    }
-                    break;
-                case 0:
-                    //Debug.Log("gggggg");
-                    break;
-            
-                case 5:
+        updateDebugView();
+        switch (grid [x, y])
+        {
+
+            case 3:
+                if (PawnLimit < 16) 
+                {
+                    GameObject newPawn = Instantiate (PawnPrefab) as GameObject;
+                    newPawn.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
+                    Pieces[x, y] = newPawn;
+                    PawnLimit= PawnLimit + 1;                        
+                } 
+                break;
+
+            case 0:
+                //Debug.Log("gggggg");Debug.Log("Destroyed");
+                break;
+        
+            case 5:
+                if (BishopLimit < 5) 
+                {
                     GameObject newBishop = Instantiate (bishopPrefab) as GameObject;
                     newBishop.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                    break; 
+                    Pieces[x, y] = newBishop;
+                    BishopLimit = BishopLimit + 1;
+                }
+                break; 
 
-                case 4:
+            case 4:
+                if (KnightLimit < 4) {
                     GameObject newKnight = Instantiate (knightPrefab) as GameObject;
                     newKnight.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                    break;
+                    Pieces[x, y] = newKnight;
+                    KnightLimit = KnightLimit + 1;
+                } 
+                break;
 
-                case 2:
+            case 2:
+                if(KingLimit < 3)
+                {
                     GameObject newKing = Instantiate (kingPrefab) as GameObject;
                     newKing.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                    break;     
+                    Pieces[x, y] = newKing;
+                    KingLimit = KingLimit + 1;
+                }
+                break;     
 
-                case 7:
+            case 7:
+                if (QueenLimit < 4) {
                     GameObject newQueen = Instantiate (queenPrefab) as GameObject;
                     newQueen.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                    break;
-                    
-                case 6:
+                    Pieces[x, y] = newQueen;
+                    QueenLimit = QueenLimit + 1;
+                }
+                break;
+                
+            case 6:
+                if (RookLimit < 4) {
                     GameObject newRook = Instantiate (rookPrefab) as GameObject;
                     newRook.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                    break;
+                    Pieces[x, y] = newRook;
+                    RookLimit = RookLimit + 1;
+                }
+                break;
 
-                case 13:
-                    if (PawnLimit < 20) {
-                        //Debug.Log("Pawn");
-                        GameObject newPawnB = Instantiate (PawnPrefabB) as GameObject;
-                        newPawnB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                        PawnLimit= PawnLimit + 1;
-                    }
-                    break;
+            case 13:
+                if (PawnLimit < 16) {
+                    //Debug.Log("Pawn");
+                    //Debug.Log("Pawn runs every frame < -20");
+                    GameObject newPawnB = Instantiate (PawnPrefabB) as GameObject;
+                    newPawnB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
+                    Pieces[x, y] = newPawnB;
+                    PawnLimit= PawnLimit + 1;
+                    Debug.Log("case 13 increase");
+                }
+                break;
 
-                case 15:
+            case 15:
+                if (BishopLimit < 4) {
                     GameObject newBishopB = Instantiate (bishopPrefabB) as GameObject;
                     newBishopB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                    break; 
+                    BishopLimit = BishopLimit + 1;
+                    Pieces[x, y] = newBishopB;
+                }
+                break; 
 
-                case 14:
+            case 14:
+                if (KnightLimit < 4) {
                     GameObject newKnightB = Instantiate (knightPrefabB) as GameObject;
                     newKnightB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                    break;
+                    KnightLimit = KnightLimit + 1;
+                    Pieces[x, y] = newKnightB;
+                }
+                break;
 
-                case 12:
+            case 12:
+                if(KingLimit < 3)
+                {
                     GameObject newKingB = Instantiate (kingPrefabB) as GameObject;
                     newKingB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                    break;     
+                    KingLimit = KingLimit + 1;
+                    Pieces[x, y] = newKingB;
+                }
+                break;     
 
-                case 17:
+            case 17:
+                if (QueenLimit < 4) {
                     GameObject newQueenB = Instantiate (queenPrefabB) as GameObject;
                     newQueenB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                    break;
-                    
-                case 16:
+                    QueenLimit = QueenLimit + 1;
+                    Pieces[x, y] = newQueenB;
+                }
+                break;
+                
+            case 16:
+                if (RookLimit < 4) {
                     GameObject newRookB = Instantiate (rookPrefabB) as GameObject;
                     newRookB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                    break;
-            }
-        
-            
-        
+                    RookLimit = RookLimit + 1;
+                    Pieces[x, y] = newRookB;
+                }
+                break;
+        }     
     }
 
     void MoveStuff(int x, int y)
     {
         switch(grid[x, y])
         {
-            case 43:
-                Debug.Log("Pawn");
-                GameObject newPawn = Instantiate (PawnPrefab) as GameObject;
-                newPawn.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                PawnLimit= PawnLimit + 1;
-                stufffff = true;
-                Debug.Log("Got past instanti");
-                grid[x, y + 1] = 0;
-                Debug.Log("Got past grid set 1");
-                grid[x, y] = 3;
-                Debug.Log("Got past grid set 2");
-                Moving = false;
-                break;
-            case 0:
-                //Debug.Log("gggggg");
-                break;
         
-            case 5:
-                GameObject newBishop = Instantiate (bishopPrefab) as GameObject;
-                newBishop.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                break; 
-
-            case 4:
-                GameObject newKnight = Instantiate (knightPrefab) as GameObject;
-                newKnight.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                break;
-
-            case 2:
-                GameObject newKing = Instantiate (kingPrefab) as GameObject;
-                newKing.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                break;     
-
-            case 7:
-                GameObject newQueen = Instantiate (queenPrefab) as GameObject;
-                newQueen.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                break;
-                
-            case 6:
-                GameObject newRook = Instantiate (rookPrefab) as GameObject;
-                newRook.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                break;
-
-            case 13:
-                if (PawnLimit < 20) {
-                    //Debug.Log("Pawn");
-                    GameObject newPawnB = Instantiate (PawnPrefabB) as GameObject;
-                    newPawnB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                    PawnLimit= PawnLimit + 1;
-                }
-                break;
-
-            case 15:
-                GameObject newBishopB = Instantiate (bishopPrefabB) as GameObject;
-                newBishopB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                break; 
-
-            case 14:
-                GameObject newKnightB = Instantiate (knightPrefabB) as GameObject;
-                newKnightB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                break;
-
-            case 12:
-                GameObject newKingB = Instantiate (kingPrefabB) as GameObject;
-                newKingB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                break;     
-
-            case 17:
-                GameObject newQueenB = Instantiate (queenPrefabB) as GameObject;
-                newQueenB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                break;
-                
-            case 16:
-                GameObject newRookB = Instantiate (rookPrefabB) as GameObject;
-                newRookB.transform.localPosition = new Vector3(x - 3.5f, y -3.5f, -2);
-                break;
         }
     }
     // Start is called before the first frame update
@@ -499,15 +491,13 @@ public class Board : MonoBehaviour
 
         grid = new int[8,8];
 
-        //boardInstance.generate();
-        //populate();
-        //Starting Board positions
+        Pieces = new GameObject[8, 8];
 
-        grid [0, 0] = 16;
-        grid [1, 0] = 14;
-        grid [2, 0] = 15;
-        grid [5, 0] = 15;
-        grid [7, 0] = 16;
+        grid [0, 0] = 16;       
+        grid [1, 0] = 14;  
+        grid [2, 0] = 15;       
+        grid [5, 0] = 15;   
+        grid [7, 0] = 16;        
         grid [6, 0] = 14;
         grid [2, 0] = 15;
         grid [3, 0] = 17;
@@ -529,6 +519,15 @@ public class Board : MonoBehaviour
             grid [x, 6] = 3;
         }  
         generate();
+        Cells = new List<Cell> ();
+
+        for(int x = 0; x < 8; x++)
+        {
+            for(int y = 0; y < 8; y++)
+            {
+                Cells.Add(createCell (x, y, (x + y) % 2));
+            }
+        }
  
     }
 
@@ -536,16 +535,5 @@ public class Board : MonoBehaviour
     void Update()
     {
         detectInput();
-        //Debug.Log("Highlight delete bool: " + ClickedForHighlightDelete);
-        //populate();
-        /*
-        for(int i = 0; i < 8; i++)
-        {
-            for(int j = 0; j < 8; j++)
-            {
-                GenerateMoves(i, j);
-            }
-        }
-        */
     }
 }
