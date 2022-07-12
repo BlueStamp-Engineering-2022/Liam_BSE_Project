@@ -1,4 +1,4 @@
-﻿# AI That Plays Alternate Versions of Chess (Dragonchess)
+﻿# Chess AI
 This will serve as a brief description of your project. Limit this to three sentences because it can become overly long at that point. This copy should draw the user in and make she/him want to read more.
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
@@ -18,7 +18,7 @@ N/A (For now)
 [![Third Milestone](https://res.cloudinary.com/marcomontalbano/image/upload/v1612574014/video_to_markdown/images/youtube--y3VAmNlER5Y-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=y3VAmNlER5Y&feature=emb_logo "Second Milestone"){:target="_blank" rel="noopener"}
 
 # First Milestone
-N/A (For now)
+I am in the process of creating a chess AI. My first milestone was getting a working chess board with pieces, as well as pawns that are moveable in typical chess rules. I encountered numerous challenges in the designing process, first among them, getting a working board. This caused many problems, but I ended up with what I believe is the most efficiant solution. This solution is to create an array of "cells", that were used to keep track of the color and location of each specific square on the grid. The next task was to create the pieces. To do this, I created a second array of integers that were used to keep track of piece location. Specific numbers were used to denote each piece and their color (ie. 3 is equal to a white pawn, and 13 is equal to a black pawn). The next challenge was getting each piece to move in accordance to the specific rules of chess.
 
 [![First Milestone](https://res.cloudinary.com/marcomontalbano/image/upload/v1612574117/video_to_markdown/images/youtube--CaCazFBhYKs-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=CaCazFBhYKs "First Milestone"){:target="_blank" rel="noopener"}
 
