@@ -13,7 +13,7 @@ N/A (For now)
 [![Final Milestone](https://res.cloudinary.com/marcomontalbano/image/upload/v1612573869/video_to_markdown/images/youtube--F7M7imOVGug-c05b58ac6eb4c4700831b2b3070cd403.jpg )](https://www.youtube.com/watch?v=F7M7imOVGug&feature=emb_logo "Final Milestone"){:target="_blank" rel="noopener"}
 
 # Second Milestone
-N/A (For now)
+For my second milestone in making my Chess AI, I ended up switiching from Unity to a program called Jupyter Notebook. This allowed me to use the python chess library, which simplified getting the actual game working. From here, I had to make the AI itself. Due to the time crunch, I ended up coding the AI in a day with methods called minimax, and alpha-beta pruning, which are algorithms that sort through possible moves using a database of piece values and positions that allow the AI to decide where to move. To move forward, I will add UI elements, as well as iron out any bugs still left in the program.
 
 [![Third Milestone](https://res.cloudinary.com/marcomontalbano/image/upload/v1612574014/video_to_markdown/images/youtube--y3VAmNlER5Y-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=y3VAmNlER5Y&feature=emb_logo "Second Milestone"){:target="_blank" rel="noopener"}
 
