@@ -1,5 +1,5 @@
 ﻿# Chess AI
-This will serve as a brief description of your project. Limit this to three sentences because it can become overly long at that point. This copy should draw the user in and make she/him want to read more.
+For my Bluestamp project, I created a Chess AI. This AI runs off of a web-based IDE called Jupyter Notebook, and is coded in python. The AI uses a method called the minimax algorithm which uses a numerical representation of the chess board to determine moves.
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
@@ -8,9 +8,9 @@ This will serve as a brief description of your project. Limit this to three sent
 ![Headstone Image](https://bluestampengineering.com/wp-content/uploads/2016/05/improve.jpg)
   
 # Final Milestone
-N/A (For now) 
+For my thrid and final milestone, I created UI with python. The main parts of this were a couple of buttons that trigger different actions, and a server that is locally hosted and uses a python library called flask. After that was done, there was the final process of ironing out the remaining bugs, which mainly consisted of move generation errors I solved by messing with the human move files.
 
-[![Final Milestone](https://res.cloudinary.com/marcomontalbano/image/upload/v1612573869/video_to_markdown/images/youtube--F7M7imOVGug-c05b58ac6eb4c4700831b2b3070cd403.jpg )](https://www.youtube.com/watch?v=F7M7imOVGug&feature=emb_logo "Final Milestone"){:target="_blank" rel="noopener"}
+[![Third Milestone](https://res.cloudinary.com/marcomontalbano/image/upload/v1658181710/video_to_markdown/images/youtube--I6q09NRWfc0-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=I6q09NRWfc0 "Third Milestone")
 
 # Second Milestone
 For my second milestone in making my Chess AI, I ended up switiching from Unity to a program called Jupyter Notebook. This allowed me to use the python chess library, which simplified getting the actual game working. From here, I had to make the AI itself. Due to the time crunch, I ended up coding the AI in a day with methods called minimax, and alpha-beta pruning, which are algorithms that sort through possible moves using a database of piece values and positions that allow the AI to decide where to move. To move forward, I will add UI elements, as well as iron out any bugs still left in the program.
